@@ -2,6 +2,7 @@ package principal;
 import java.util.Random;
 import java.util.Scanner;
 
+import personagens.Player;
 import personagens.classes.Barbaro;
 import personagens.classes.Bardo;
 import personagens.classes.Mago;
@@ -14,8 +15,13 @@ public class App {
         Random random = new Random();
         System.out.println("Bem vindos ao RPG de console!");
         System.out.println("Escolha sua classe:\n[1] para paladino\n[2] para mago\n[3] para Bardo\n[4] para Barbaro\n");
+        System.out.print("> ");
         int opt0 = sc.nextInt();
         int numR;
+        Player player = new Player();
+        System.out.println("Digite seu nome: ");
+        System.out.print("> ");
+        player.nome = sc.next();
         switch(opt0){
             case 1:
                 Paladino paladino = new Paladino();
@@ -38,6 +44,8 @@ public class App {
                         paladino.goblin = goblinP;
                         break;
                 }
+                player.paladino = paladino;
+                inGame(player);
                 break;
             case 2:
                 Mago mago = new Mago();
@@ -60,6 +68,8 @@ public class App {
                         mago.goblin = goblinP;
                         break;
                 }
+                player.mago = mago;
+                inGame(player);
                 break;
             case 3:
                 Bardo bardo = new Bardo();
@@ -82,6 +92,8 @@ public class App {
                         bardo.goblin = goblinP;
                         break;
                 }
+                player.bardoardo = bardo;
+                inGame(player);
                 break;
             case 4: 
                 Barbaro barbaro = new Barbaro();
@@ -104,10 +116,29 @@ public class App {
                         barbaro.goblin = goblinP;
                         break;
                 }
+                player.barbaro = barbaro;
+                inGame(player);
                 break;
             default:
                 System.out.println("Você viveu uma vida triste e sem aventuras.\nGame Over!");
                 break;
+        }
+    }
+    public static void inGame(Player player1){
+        Scanner sc = new Scanner(System.in);
+        boolean gameOver = false;
+        while (gameOver == false) {
+            System.out.println("Digite\n[1] Perfil\n[2] Aventurar");
+            System.out.print("> ");
+            int opt1 = sc.nextInt();
+            switch(opt1){
+                case 1:
+                    System.out.println("-----Perfil-----\nNome: "+ player1.nome +"\nClasse: \nRaça: ");
+                    break;
+                case 2:
+                    System.out.println("!!!EM CONSTRUÇÃO!!!");
+                    break;
+            }
         }
     }
 }
